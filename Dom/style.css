@@ -1,0 +1,11 @@
+/* Its all about css of handson */
+#Dimention{
+    display: flex;
+    flex-direction: row;
+}
+.card{
+    height: 100px;
+    width: 100px;
+    margin: 2px;
+    border: 2px solid purple;
+}
