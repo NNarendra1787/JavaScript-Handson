@@ -9,3 +9,13 @@
     margin: 2px;
     border: 2px solid purple;
 }
+
+body{
+    background-color: lemonchiffon;
+}
+h2{
+    color: blue;
+}
+div pre{
+    color: purple;
+}
