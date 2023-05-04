@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promisers</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <section>
+        <div>
+            <h2>Q1- Write one example explaining how you can write a callback function.</h2>
+            <pre>
+                function greet(){
+                    console.log("Callback Function...");
+                }
+                function sayName(gre){
+                    console.log('Welcome to'+' '+gre);
+                }
+                // Call Back Function
+                setTimeout(greet, 2000);
+                sayName('PrepBytes')
+            </pre>
+        </div>
+        <div>
+            <h2>Q2- Write a callback function to print number 1 to 7, in which 1 should be printed after 1sec, 2 should be print after 2sec and three should print after 3sec</h2>
+            <p><b>Call Back Hell:</b> The Phenomenon which happens when we nest multiple callback within a function is hell. The shape of the resulting code structure resembles a pyramid and hence callback hell is call <b>Pyramid of the Doom</b> it makes the code very difficult to understand and maintain.</p>
+            <pre>
+                let count = 0;
+                setTimeout(()=>{
+                    console.log(++count);
+                    setTimeout(()=>{
+                        console.log(++count);
+                        setTimeout(()=>{
+                            console.log(++count);
+                            setTimeout(()=>{
+                                console.log(++count);
+                                setTimeout(()=>{
+                                    console.log(++count);
+                                    setTimeout(()=>{
+                                        console.log(++count);
+                                        setTimeout(()=>{
+                                         console.log(++count);
+                                        }, 7000);
+                                    }, 6000);
+                                }, 5000);
+                            }, 4000);
+                        }, 3000);
+                    }, 2000);
+                },1000);
+            </pre>
+        </div>
+        <div>
+            <h2>Q3- Write the promise function to print from 1 to 7, in which 1 should be printed after 1sec, 2 should be printed after 2sec 3 should be printed after 3sec</h2>
+            <pre>
+                function NumbPromise(num, timeout){
+                    return new Promise((res, rej)=>{
+                        setTimeout(()=>{
+                            console.log(num);
+                            res("Run Successfully...")
+                        },timeout);
+                    })
+                }
+                function NumTime(){
+                    NumbPromise("1", 1000)
+                    .then(()=> NumbPromise("2", 2000))
+                    .then(()=> NumbPromise("3", 3000))
+                    .then(()=> NumbPromise("4", 4000))
+                    .then(()=> NumbPromise("5", 5000))
+                    .then(()=> NumbPromise("6", 6000))
+                    .then(()=> NumbPromise("7", 7000))
+                }
+                NumTime();
+
+                Output:
+                1
+                2
+                3
+                4
+                5
+                6
+                7
+            </pre>
+        </div>
+        <div>
+            <h2>Q4- Create a promise function accepting an argument, if yes is passed to the function then it should go to resolved state and print Promise Resolved, and if nothing is passed 
+                then it should go to reject the state and catch the error and print Promise Rejected</h2>
+                <pre>
+                    syntax:
+                    function King(num) {
+                        return new Promise((res, rej)=>{
+                            if(num == 10){
+                                res("Promise Resolved")
+                            }
+                            else{
+                                rej("Promise Reject")
+                            }
+                        });
+                    }
+                    King(10).then((d)=>{ console.log(d)}).catch((err)=>{console.log(err)});
+                </pre>
+        </div>
+        <div>
+            <h2>Q5- Create example to explain callback function</h2>
+            <pre>
+                function one(rome) {
+                    console.log(rome, " is outer function");
+                }
+                function call(a, b, myCallBack){
+                    let sum = a * b;
+                    myCallBack(sum);
+                }
+                call(3,5, one);
+
+                Output:
+                15 is outer function
+            </pre>
+        </div>
+        <div>
+            <h2>Q6- Create example to explain callback hell function</h2>
+            <pre>
+                let count = 0;
+                setTimeout(()=>{
+                    console.log(++count);
+                    setTimeout(()=>{
+                        console.log(++count);
+                        setTimeout(()=>{
+                            console.log(++count);
+                            setTimeout(()=>{
+                                console.log(++count);
+                                setTimeout(()=>{
+                                    console.log(++count);
+                                    setTimeout(()=>{
+                                        console.log(++count);
+                                        setTimeout(()=>{
+                                         console.log(++count);
+                                        }, 7000);
+                                    }, 6000);
+                                }, 5000);
+                            }, 4000);
+                        }, 3000);
+                    }, 2000);
+                },1000);
+            </pre>
+        </div>
+        <div>
+            <h2>Q7- Create example to explain Promise function</h2>
+            <pre>
+                const pro = new Promise((res, rej)=>{
+                    let name = "Andy"
+                    if (name === "Andy") {
+                        res("Hurry🥳")
+                    }
+                    else{
+                        rej("So Sorry 🙇")
+                    }
+                })
+                pro.then((data)=>{
+                    console.log(data);
+                }).catch((err)=>{
+                    console.log(err);
+                })                
+            </pre>
+        </div>
+        <div> 
+            <h2>Q8- Create example async await function</h2>
+            <pre>
+                function Dis(nums, timeout){
+                    return new Promise((res, rej) => {
+                        setTimeout(() => {
+                            console.log(nums);
+                            res("Promise Resolve...!!")
+                        }, timeout);
+                    })
+                }
+                
+                async function Call(){
+                    await Dis("A", 2000);
+                     Dis("E", 1000);
+                     Dis("I", 4000);
+                     Dis("O", 3000);
+                     Dis("U", 5000);
+                }
+                
+                Call();
+            </pre>
+        </div>
+        <div>
+            <h2>Q9- Create example to explain promise.all function</h2>
+            <pre>
+                const S1 = new Promise((res, rej)=>{
+                    let name = "King";
+                    if (name === "King") {
+                        res("Welcome To Beach");
+                    } 
+                    else {
+                        rej("Your not Welcome hear");
+                    }
+                })
+                S1.then((da)=>{console.log(da)}).catch((err)=>{console.log(err)})
+                
+                const S2 = new Promise((res, rej)=>{
+                    let height = 6.3;
+                    if (height == 6.3) {
+                        res("Your So Tall")
+                    } 
+                    else {
+                        rej("Your To Short");
+                    }
+                })
+                S2.then((da)=>{console.log(da)}).catch((err)=>{console.log(err)})
+                
+                const S3 = new Promise((res, rej)=>{
+                    let add = "New York";
+                    if (add === "New York") {
+                        res("Wow😮")
+                    }
+                    else{
+                        rej("Shhhhe 😔")
+                    }
+                })
+                S3.then((da)=>{console.log(da)}).catch((err)=>{console.log(err)})
+                
+                Promise.all([S1,S2,S3]).then((data)=> console.log(data)).catch((err)=> console.log(err));
+            </pre>
+        </div>
+    </section>
+</body>
+<script src="./Promise.js"></script>
+</html>
