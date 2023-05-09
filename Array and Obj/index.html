@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array And Obj</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <section>
+        <div>
+            <h2>Q1- "We are interested in retrieving only the students' names; all the names should be in caps.
+            ['JOHN', 'BABA', 'YAGA', 'WICK']"</h2>
+            <pre>
+                answer: 
+                let StName = studentRecords.map((student)=>{
+                    return student.name.toUpperCase();
+                });
+                console.log(StName);
+            </pre>
+        </div>
+        <div>
+            <h2>Q2- "Suppose we have the same dataset as above but this time we want to get the details of students who scored more than 50 marks.
+
+                [{name: 'John', id: 123, marks: 98 },{name: 'Wick', id: 115, marks: 75 }]"</h2>
+
+             <pre>
+                let StMarks = studentRecords.filter((Std)=>{
+                    return Std.marks > 50;
+                })
+                console.log(StMarks);
+             </pre>   
+        </div>
+        <div>
+            <h2>Q3- Retrieve the details of students who scored more than 50 marks and have IDs greater than 120.</h2>
+            <pre>
+                let rsult = studentRecords.filter((Std)=>{
+                    return Std.marks > 50 && Std.id > 120;
+                });
+                console.log(rsult);
+            </pre>
+        </div>
+        <div>
+            <h2>Q4- Consider the same scenario we have discussed above, but this time we would like to know the sum total of the marks of the students.</h2>
+            <pre>
+                let ToMark = studentRecords.reduce((acc, cuv)=>acc+cuv.marks ,0);
+                console.log(ToMark);
+            </pre>
+        </div>
+        <div>
+            <h2>Q5- This time we want to get only the names of the students who scored more than 50 marks from the same dataset used above.</h2>
+            <pre>
+                let StMarks = studentRecords.filter((Std)=>{
+                    return Std.marks > 50;
+                });
+                
+                let StName = StMarks.map((std)=> std.name);
+                console.log(StName);
+            </pre>
+        </div>
+        <div>
+            <h2>Q6- This time we are required to print the sum of marks of the students with id > 120.</h2>
+            <pre>
+                let StGreat = studentRecords.filter((std)=> std.id> 120);
+                let sum = StGreat.reduce((prv, cuv)=> prv + cuv.marks, 0);
+                console.log(sum);
+            </pre>
+        </div>
+        <div>
+            <h2>Q7- This time we are required to print the total marks of the students with marks greater than 50 after a grace of 15 marks has been added to those students who scored less than 50.</h2>
+            <pre>
+                let check = studentRecords.map(std =>{
+                    if (std.marks < 50) {
+                        return {...std, marks:std.marks + 15};    
+                    } 
+                    else {
+                        return std
+                    }
+                });
+                
+                let filterTheRecord = check.filter(rec => rec.marks>50);
+                let TotalIt = filterTheRecord.reduce((prv, cuv)=> prv + cuv.marks,0);
+                console.log(TotalIt);
+            </pre>
+        </div>
+        <div>
+            <h2>Q8- Create 6 objects , each object will have name, class, roll no as properties. Store these objects in an array of objects. </h2>
+            <pre>
+                let f1 = {name: 'Andy', class: "12th", rollNo: 32};
+                let f2 = {name: 'Maskra', class: "11th", rollNo: 312};
+                let f3 = {name: 'Rayha', class: "Graduation", rollNo: 3};
+                let f4 = {name: 'Alexa', class: "6th", rollNo: 43};
+                let f5 = {name: 'Omas', class: "12th", rollNo: 25};
+                let f6 = {name: 'AjLee', class: "10th", rollNo: 12};
+
+                let ArrOfObj = [f1,f2,f3,f4,f5,f6];
+                console.log(ArrOfObj);
+            </pre>
+        </div>
+    </section>
+</body>
+<script src="./Arr.js"></script>
+</html>
