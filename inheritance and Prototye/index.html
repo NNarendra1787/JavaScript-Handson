@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inheritance and Prototype</title>
+</head>
+<body>
+    <section>
+        <div>
+            <h2>Q1- Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype</h2>
+            <pre>
+                const parent = {
+                    sayBro : funtion(){
+                        console.log('Say Bro To The Parent');
+                    }
+                }
+                const child1 = Object.create(parent);
+                child1.name : "KingStan";
+                console.log(child1.name);
+
+                Output: 
+                KingStan
+            </pre>
+        </div>
+        <div>
+            <h2>Q2- Write code to explain prototype chaining</h2>
+            <pre>
+                const grandParent = {
+                    SayGp : function(){
+                        console.log("GrandParent Say GP to everyone");
+                    }
+                }
+                
+                const Dad = Object.create(grandParent);
+                Dad.SayP = function(){
+                    console.log("Parent Say Hello To Everyone");
+                }
+                
+                const son = Object.create(Dad);
+                son.SayMan = function(){
+                    console.log("Say Hi Man to Everyone");
+                }
+                
+                son.SayGp();
+                son.SayP();
+                son.SayMan();
+
+                Output:
+                GrandParent Say GP to everyone
+                Parent Say Hello To Everyone
+                Say Hi Man to Everyone
+            </pre>
+        </div>
+        <div>
+            <h2>Q3- Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays</h2>
+        </div>
+        <div>
+            <h2>Q4- Write a JavaScript function to retrieve all the names of object's own and inherited properties.</h2>
+            <pre>
+                function getAllProperties(obj){
+                    let props = [];
+                
+                    props = Object.getOwnPropertyNames(obj);
+                
+                    let proto = Object.getPrototypeOf(obj);
+                    while(proto){
+                        props = props.concat(Object.getOwnPropertyNames(proto));
+                        proto = Object.getPrototypeOf(proto);
+                    }
+                    return props;
+                }
+            </pre>
+        </div>
+    </section>
+</body>
+<script src="./ip.js"></script>
+</html>
